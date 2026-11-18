@@ -12,7 +12,7 @@
   font-size: 14px;
   --green: #536b44;
   --green-dark: #3f5433;
-  --muted: #81867b;
+  --muted: #68725e;
   --line: #e8ebe3;
   --surface: #fff;
 }
@@ -87,7 +87,7 @@ textarea {
 }
 input::placeholder,
 textarea::placeholder {
-  color: #989e91;
+  color: #6c775f;
 }
 textarea {
   resize: vertical;
@@ -129,10 +129,10 @@ select {
   color: #91a374;
 }
 .eyebrow {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 650;
   letter-spacing: 1.6px;
-  color: #858e7a;
+  color: #68735e;
 }
 .button {
   display: inline-flex;
@@ -226,7 +226,7 @@ select {
 .optional {
   font-size: 11px;
   font-weight: 400;
-  color: #92998b;
+  color: #6d775f;
 }
 .sr-only {
   position: absolute;
@@ -276,11 +276,11 @@ select {
   gap: 9px;
   align-items: center;
   background: #e2e9d7;
-  color: #60704f;
+  color: #53633f;
   border: 1px solid #d6dfc9;
   border-radius: 20px;
   padding: 8px 11px;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1.3px;
   font-weight: 600;
 }
@@ -297,7 +297,7 @@ select {
   color: #627849;
 }
 .story-content > p {
-  color: #7b856e;
+  color: #657052;
   font-size: 13px;
   line-height: 1.9;
 }
@@ -325,7 +325,7 @@ select {
   gap: 6px;
 }
 .story-board-top span:last-child {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1px;
 }
 .story-task {
@@ -353,26 +353,26 @@ select {
 }
 .struck {
   text-decoration: line-through;
-  color: #96a08b;
+  color: #637050;
 }
 .mini-tag {
-  font-size: 8px;
+  font-size: 11px;
   background: #edf3e6;
-  color: #72865d;
+  color: #536c38;
   padding: 4px 6px;
   border-radius: 4px;
   margin-left: auto;
 }
 .mini-tag.amber {
   background: #f7efda;
-  color: #a18b50;
+  color: #7f6525;
 }
 .story-progress {
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
-  color: #94a087;
-  font-size: 9px;
+  color: #697a57;
+  font-size: 11px;
 }
 .story-progress span:last-child {
   color: #637c4f;
@@ -380,9 +380,9 @@ select {
 .story-footer {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1px;
-  color: #8e9b80;
+  color: #5e7047;
   z-index: 1;
 }
 .story-footer span:last-child {
@@ -408,7 +408,7 @@ select {
 .auth-description {
   font-size: 12px;
   line-height: 1.8;
-  color: #8c9483;
+  color: #6b755e;
   margin-bottom: 32px;
 }
 .auth-form {
@@ -440,7 +440,7 @@ select {
 .auth-switch {
   text-align: center;
   font-size: 11px;
-  color: #8b9383;
+  color: #68725e;
   margin: 26px 0 32px;
 }
 .auth-switch button {
@@ -456,8 +456,8 @@ select {
   justify-content: center;
   align-items: center;
   gap: 7px;
-  font-size: 9px;
-  color: #9ba28f;
+  font-size: 11px;
+  color: #69745e;
   border-top: 1px solid var(--line);
   padding-top: 23px;
 }
@@ -465,8 +465,8 @@ select {
   position: absolute;
   bottom: 25px;
   text-align: center;
-  color: #a6ad9b;
-  font-size: 9px;
+  color: #657052;
+  font-size: 11px;
   letter-spacing: 0.4px;
 }
 .auth-mobile-brand {
@@ -525,20 +525,20 @@ select {
   font-weight: 600;
 }
 .workspace-label strong {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
 }
 .workspace-label small {
   display: block;
-  color: #9aa28e;
-  font-size: 9px;
+  color: #68745b;
+  font-size: 11px;
   margin-top: 3px;
 }
 .nav-heading {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 650;
   letter-spacing: 1.5px;
-  color: #9ba38f;
+  color: #68745b;
   margin: 31px 13px 13px;
 }
 .nav-item {
@@ -549,7 +549,7 @@ select {
   padding: 12px 13px;
   border-radius: 7px;
   text-align: left;
-  color: #818a74;
+  color: #667258;
   font-size: 11px;
   margin-bottom: 5px;
 }
@@ -566,7 +566,7 @@ select {
 }
 .nav-count {
   margin-left: auto;
-  font-size: 9px;
+  font-size: 11px;
   background: #f0f3e9;
   border: 1px solid #e0e6d5;
   padding: 2px 5px;
@@ -617,8 +617,8 @@ select {
   color: #5d7049;
 }
 .focus-note p {
-  color: #8a9779;
-  font-size: 9px;
+  color: #65784d;
+  font-size: 11px;
   line-height: 1.7;
   margin: 12px 0 18px;
 }
@@ -626,7 +626,7 @@ select {
   display: flex;
   gap: 8px;
   align-items: center;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 650;
   color: #647b4c;
   padding: 0;
@@ -647,8 +647,8 @@ select {
   background: #e7ddcc;
   border: 2px solid #fff;
   border-radius: 50%;
-  color: #927e5f;
-  font-size: 10px;
+  color: #5e4e38;
+  font-size: 11px;
   font-weight: 600;
 }
 .sidebar-user > div {
@@ -656,15 +656,15 @@ select {
 }
 .sidebar-user strong {
   display: block;
-  font-size: 10px;
+  font-size: 11px;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 .sidebar-user small {
   display: block;
-  color: #9aa18f;
-  font-size: 9px;
+  color: #68745b;
+  font-size: 11px;
   margin-top: 4px;
 }
 .sidebar-user > .icon-button {
@@ -689,8 +689,8 @@ select {
   display: flex;
   align-items: center;
   gap: 12px;
-  color: #a0a697;
-  font-size: 10px;
+  color: #6d785f;
+  font-size: 11px;
 }
 .breadcrumb strong {
   font-weight: 500;
@@ -705,15 +705,15 @@ select {
   display: flex;
   gap: 7px;
   align-items: center;
-  font-size: 10px;
-  color: #909984;
+  font-size: 11px;
+  color: #667457;
 }
 .private-badge {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 9px;
-  color: #849475;
+  font-size: 11px;
+  color: #62774f;
   border: 1px solid #e4eadb;
   border-radius: 15px;
   padding: 6px 10px;
@@ -736,7 +736,7 @@ select {
   margin-bottom: 31px;
 }
 .page-heading .eyebrow {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1.5px;
 }
 .page-heading h1 {
@@ -754,7 +754,7 @@ select {
 }
 .page-heading p {
   font-size: 11px;
-  color: #929987;
+  color: #68745b;
   line-height: 1.7;
 }
 .page-heading > .button {
@@ -776,8 +776,8 @@ select {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #8b9480;
-  font-size: 10px;
+  color: #68755b;
+  font-size: 11px;
 }
 .stat-icon {
   display: grid;
@@ -812,8 +812,8 @@ select {
   color: #6c8752;
 }
 .stat-caption {
-  font-size: 9px;
-  color: #a5ac9c;
+  font-size: 11px;
+  color: #68755b;
 }
 .progress-banner {
   display: flex;
@@ -860,9 +860,9 @@ select {
   stroke-width: 1.5;
 }
 .progress-copy .eyebrow {
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 1.3px;
-  color: #91a277;
+  color: #546541;
 }
 .progress-copy h2 {
   font-size: 17px;
@@ -872,8 +872,8 @@ select {
   margin: 7px 0;
 }
 .progress-copy p {
-  font-size: 9px;
-  color: #91a17d;
+  font-size: 11px;
+  color: #546541;
   line-height: 1.6;
 }
 .progress-summary {
@@ -884,14 +884,14 @@ select {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 8px;
-  color: #8a9c75;
+  font-size: 11px;
+  color: #536440;
   margin-bottom: 10px;
 }
 .progress-summary strong {
   font-size: 12px;
   font-weight: 650;
-  color: #708b53;
+  color: #556e3c;
 }
 .progress-track {
   height: 6px;
@@ -926,7 +926,7 @@ select {
   letter-spacing: -0.3px;
 }
 .number-chip {
-  font-size: 9px;
+  font-size: 11px;
   color: #92a17f;
   background: #f1f5e9;
   border: 1px solid #e3ead8;
@@ -938,16 +938,16 @@ select {
   letter-spacing: 0;
 }
 .section-heading p {
-  font-size: 9px;
-  color: #a2aa97;
+  font-size: 11px;
+  color: #6b785e;
   margin-top: 7px;
 }
 .section-hint {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 9px;
-  color: #a1ab94;
+  font-size: 11px;
+  color: #6b785e;
 }
 .filter-bar {
   display: flex;
@@ -964,10 +964,10 @@ select {
   max-width: 300px;
   width: 100%;
   background: #fcfdfa;
-  color: #a3ac97;
+  color: #6b785e;
 }
 .search-input input {
-  font-size: 10px;
+  font-size: 11px;
   border: 0;
   background: transparent;
   padding: 10px;
@@ -986,8 +986,8 @@ select {
   border-color: #e7ebe1;
   background: #fefefc;
   padding: 8px 23px 8px 10px;
-  font-size: 9px;
-  color: #879478;
+  font-size: 11px;
+  color: #64764e;
   border-radius: 6px;
   max-width: 160px;
 }
@@ -1000,10 +1000,10 @@ select {
   table-layout: fixed;
 }
 .task-table th {
-  font-size: 7px;
+  font-size: 11px;
   font-weight: 550;
   letter-spacing: 1.1px;
-  color: #9ca78e;
+  color: #5b684a;
   text-align: left;
   padding: 12px 14px;
   background: #fafbf7;
@@ -1056,7 +1056,7 @@ select {
   flex-shrink: 0;
   width: 16px;
   height: 16px;
-  border: 1px solid #d4ddc8;
+  border: 1px solid #8a9b75;
   border-radius: 5px;
   padding: 0;
   display: grid;
@@ -1079,7 +1079,7 @@ select {
   display: block;
 }
 .task-title strong {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   display: block;
   overflow: hidden;
@@ -1093,14 +1093,14 @@ select {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 8px;
-  color: #a4ad98;
+  font-size: 11px;
+  color: #6b785d;
   margin-top: 3px;
   line-height: 1.5;
 }
 .task-title strong.task-done {
   text-decoration: line-through;
-  color: #a1ad94;
+  color: #64774d;
 }
 .status-badge {
   display: inline-flex;
@@ -1108,10 +1108,10 @@ select {
   gap: 5px;
   padding: 5px 7px;
   border-radius: 5px;
-  font-size: 8px;
+  font-size: 11px;
   white-space: nowrap;
   background: #f2f3ee;
-  color: #9aa28f;
+  color: #647357;
   border: 1px solid #e9ece2;
 }
 .status-badge > span {
@@ -1123,30 +1123,30 @@ select {
 }
 .status-badge.in_progress {
   background: #fcf5e5;
-  color: #b49b61;
+  color: #806429;
   border-color: #f1e7ce;
 }
 .status-badge.completed {
   background: #f0f6e7;
-  color: #8aa66c;
+  color: #526d35;
   border-color: #e0ebd2;
 }
 .priority-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 9px;
-  color: #97a08a;
+  font-size: 11px;
+  color: #677651;
   white-space: nowrap;
 }
 .priority-badge.high {
-  color: #bb8d78;
+  color: #925d44;
 }
 .priority-badge.medium {
-  color: #baa571;
+  color: #80672d;
 }
 .priority-badge.low {
-  color: #95a584;
+  color: #62784c;
 }
 .priority-medium {
   font-size: 15px;
@@ -1154,15 +1154,15 @@ select {
   font-weight: 500;
 }
 .due-date {
-  font-size: 9px;
-  color: #8e9b80;
+  font-size: 11px;
+  color: #5e7047;
   white-space: nowrap;
 }
 .due-date.overdue {
-  color: #b58a73;
+  color: #925e46;
 }
 .muted {
-  color: #b3bbaa;
+  color: #616c53;
 }
 .row-actions {
   position: relative;
@@ -1173,7 +1173,7 @@ select {
 .row-actions > .icon-button {
   width: 25px;
   height: 28px;
-  color: #a6b197;
+  color: #65794d;
 }
 .row-actions > .icon-button:hover {
   color: #5e744b;
@@ -1200,7 +1200,7 @@ select {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 11px;
   padding: 9px 8px;
   width: 100%;
   white-space: nowrap;
@@ -1216,8 +1216,8 @@ select {
   justify-content: space-between;
   align-items: center;
   padding: 12px 21px;
-  font-size: 8px;
-  color: #a0ab93;
+  font-size: 11px;
+  color: #576747;
 }
 .table-footer > div {
   display: flex;
@@ -1267,7 +1267,7 @@ select {
 }
 .empty-state p {
   font-size: 11px;
-  color: #9aa58d;
+  color: #63764e;
   margin: 12px auto 22px;
   line-height: 1.8;
   max-width: 320px;
@@ -1277,8 +1277,8 @@ select {
   justify-content: space-between;
   gap: 15px;
   padding: 26px 0;
-  font-size: 8px;
-  color: #a5af98;
+  font-size: 11px;
+  color: #576747;
 }
 .workspace-footer > span {
   display: flex;
@@ -1287,7 +1287,7 @@ select {
 }
 .footer-flower {
   font-size: 16px;
-  color: #a8b694;
+  color: #647e49;
 }
 .mobile-only,
 .nav-backdrop {
@@ -1355,7 +1355,7 @@ select {
   overflow-wrap: anywhere;
 }
 .modal-heading .eyebrow {
-  font-size: 8px;
+  font-size: 11px;
 }
 .task-form {
   display: flex;
@@ -1394,7 +1394,7 @@ select {
   margin-bottom: 20px;
 }
 .detail-badges .status-badge {
-  font-size: 10px;
+  font-size: 11px;
   padding: 6px 9px;
 }
 .detail-description {
@@ -1442,10 +1442,10 @@ select {
     font-size: 12px;
   }
   .task-title > span {
-    font-size: 10px;
+    font-size: 11px;
   }
   .status-badge {
-    font-size: 10px;
+    font-size: 11px;
   }
   .priority-badge,
   .due-date {
@@ -1475,7 +1475,7 @@ select {
     padding: 14px 12px;
   }
   .stat-caption {
-    font-size: 8px;
+    font-size: 11px;
   }
   .progress-banner {
     padding: 19px;
@@ -1527,10 +1527,10 @@ select {
     padding: 17px;
   }
   .story-task {
-    font-size: 10px;
+    font-size: 11px;
   }
   .mini-tag {
-    font-size: 7px;
+    font-size: 11px;
   }
 }
 @media (max-width: 850px) {
@@ -1587,7 +1587,7 @@ select {
     font-size: 11px;
   }
   .pill {
-    font-size: 6px;
+    font-size: 11px;
     padding: 7px 8px;
     letter-spacing: 0.6px;
   }
@@ -1595,7 +1595,7 @@ select {
     padding: 13px;
   }
   .story-task {
-    font-size: 8px;
+    font-size: 11px;
     gap: 6px;
   }
   .story-check,
@@ -1604,17 +1604,17 @@ select {
     height: 13px;
   }
   .mini-tag {
-    font-size: 6px;
+    font-size: 11px;
     padding: 3px;
   }
   .story-footer {
-    font-size: 6px;
+    font-size: 11px;
   }
   .auth-form-wrap h2 {
     font-size: 29px;
   }
   .auth-trust {
-    font-size: 8px;
+    font-size: 11px;
   }
   .auth-panel {
     padding: 35px 24px;
@@ -1654,7 +1654,7 @@ select {
     font-size: 12px;
   }
   .auth-trust {
-    font-size: 9px;
+    font-size: 11px;
   }
   .topbar {
     padding: 0 17px;
@@ -1663,7 +1663,7 @@ select {
     gap: 0;
   }
   .today-date {
-    font-size: 9px;
+    font-size: 11px;
   }
   .private-badge {
     display: none;
@@ -1703,14 +1703,14 @@ select {
     padding: 15px;
   }
   .stat-label {
-    font-size: 10px;
+    font-size: 11px;
   }
   .stat-number {
     font-size: 30px;
     margin: 8px 0;
   }
   .stat-caption {
-    font-size: 8px;
+    font-size: 11px;
   }
   .progress-banner {
     padding: 18px 16px;
@@ -1729,10 +1729,10 @@ select {
     font-size: 15px;
   }
   .progress-copy .eyebrow {
-    font-size: 6px;
+    font-size: 11px;
   }
   .progress-copy p {
-    font-size: 8px;
+    font-size: 11px;
   }
   .progress-summary {
     width: 100%;
@@ -1768,7 +1768,7 @@ select {
   .filter-selects select {
     max-width: none;
     flex: 1;
-    font-size: 10px;
+    font-size: 11px;
     padding: 9px;
   }
   .task-table {
@@ -1801,13 +1801,13 @@ select {
     font-size: 11px;
   }
   .task-title > span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .task-name-cell {
     gap: 8px;
   }
   .status-badge {
-    font-size: 8px;
+    font-size: 11px;
     padding: 5px 6px;
   }
   .task-table td.actions-cell {
@@ -1825,7 +1825,7 @@ select {
   }
   .table-footer {
     padding: 12px 13px;
-    font-size: 8px;
+    font-size: 11px;
   }
   .table-footer > div {
     gap: 5px;
@@ -1845,7 +1845,7 @@ select {
     padding: 12px 10px;
   }
   .workspace-footer {
-    font-size: 8px;
+    font-size: 11px;
     padding: 22px 2px 70px;
   }
   .workspace-footer > span:last-child {
@@ -1866,7 +1866,7 @@ select {
     font-size: 16px;
   }
   .toast {
-    font-size: 10px;
+    font-size: 11px;
     white-space: normal;
     width: max-content;
     max-width: calc(100% - 28px);
@@ -1890,4 +1890,13 @@ select {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Keep task content comfortably readable at every breakpoint. */
+.task-title strong,
+.search-input input {
+  font-size: 12px;
+}
+.nav-item {
+  font-size: 12px;
 }

@@ -23,7 +23,8 @@
     "db:seed": "npm run db:seed -w server",
     "db:dev": "npm run db:dev -w server",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "verify": "node scripts/verify.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -32,6 +33,7 @@
     "globals": "^16.5.0",
     "concurrently": "^9.2.1",
     "@playwright/test": "^1.56.1",
-    "prettier": "3.10.1"
+    "prettier": "3.10.1",
+    "@axe-core/playwright": "4.14.0"
   }
 }

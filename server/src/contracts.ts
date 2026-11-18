@@ -22,7 +22,14 @@ export const loginSchema = z.strictObject({
     .email()
     .max(254)
     .transform((v) => v.toLowerCase()),
-  password: z.string().min(1).max(200),
+  password: z
+    .string()
+    .min(1)
+    .max(72)
+    .refine(
+      (v) => Buffer.byteLength(v, "utf8") <= 72,
+      "Password must be at most 72 bytes",
+    ),
 });
 const dueDate = z.iso.date().nullable().optional();
 const taskFields = {

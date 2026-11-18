@@ -103,6 +103,23 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
     [detail, setDetail] = useState<Task | null>(null),
     [busy, setBusy] = useState(false),
     [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [compact, setCompact] = useState(
+    () => window.matchMedia("(max-width: 850px)").matches,
+  );
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 850px)");
+    const update = () => setCompact(media.matches);
+    media.addEventListener("change", update);
+    return () => media.removeEventListener("change", update);
+  }, []);
+  useEffect(() => {
+    if (!mobileNav) return;
+    const close = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileNav(false);
+    };
+    document.addEventListener("keydown", close);
+    return () => document.removeEventListener("keydown", close);
+  }, [mobileNav]);
   const generation = useRef(0);
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -246,11 +263,16 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
       {mobileNav && (
         <button
           className="nav-backdrop"
-          aria-label="Close navigation"
+          aria-label="Dismiss navigation"
           onClick={() => setMobileNav(false)}
         />
       )}
-      <aside className={`sidebar ${mobileNav ? "open" : ""}`}>
+      <aside
+        id="workspace-navigation"
+        inert={compact && !mobileNav}
+        aria-hidden={compact && !mobileNav}
+        className={`sidebar ${mobileNav ? "open" : ""}`}
+      >
         <div className="sidebar-brand">
           <Brand />
           <button
@@ -340,6 +362,8 @@ function Workspace({ user, onLogout }: { user: User; onLogout: () => void }) {
             <button
               className="icon-button mobile-only"
               aria-label="Open navigation"
+              aria-expanded={mobileNav}
+              aria-controls="workspace-navigation"
               onClick={() => setMobileNav(true)}
             >
               <Menu size={21} />

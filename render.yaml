@@ -1,0 +1,33 @@
+# Review and apply only after repository and deployment authorization.
+services:
+  - type: web
+    name: taskflow
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm ci --include=dev && npm run build
+    # Free services do not support pre-deploy commands. Run deploy migrations before binding.
+    startCommand: npm run start:render
+    healthCheckPath: /api/health
+    autoDeployTrigger: off
+    envVars:
+      - key: NODE_VERSION
+        value: 26.13.1
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        generateValue: true
+      - key: APP_ORIGIN
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: taskflow-db
+          property: connectionString
+databases:
+  - name: taskflow-db
+    plan: free
+    region: oregon
+    databaseName: taskflow
+    user: taskflow
+    postgresMajorVersion: "17"
+    ipAllowList: []

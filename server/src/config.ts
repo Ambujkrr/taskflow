@@ -11,7 +11,7 @@ const schema = z.object({
   DATABASE_URL: z.string().regex(/^postgres(ql)?:\/\//),
   JWT_SECRET: z
     .string()
-    .min(48)
+    .min(32)
     .refine(
       (v) => !v.startsWith("replace-with-"),
       "Generate a random JWT_SECRET",
