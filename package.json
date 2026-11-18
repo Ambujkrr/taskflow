@@ -24,7 +24,8 @@
     "db:dev": "npm run db:dev -w server",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "test:production": "node scripts/smoke-production.mjs"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",

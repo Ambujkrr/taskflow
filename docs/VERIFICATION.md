@@ -39,21 +39,25 @@ Accessibility results cover the scanned states only; they are not a claim of exh
 
 The full development/build dependency graph reports **11 high-severity package findings**, all inherited from the same unpatched picomatch advisory: [GHSA-fc5q-39xc-vjpf](https://github.com/advisories/GHSA-fc5q-39xc-vjpf). The advisory lists no patched version as of this review. The application does not accept glob patterns. Vite, Vitest and ESLint are build/test tools, and the public application serves built assets through Express. The runtime-only audit reports zero vulnerabilities. Do not expose the Vite development server to the internet or apply blind force-upgrade/downgrade fixes.
 
-## Public deployment
+## Public deployment — verified
 
-**Not deployed. No remote repository has been created, no code has been pushed, and no Render resources have been changed.**
+**LIVE:** https://taskflow-td5y.onrender.com
 
-The connected GitHub account was verified as Ambujkrr. Render lists a workspace named My Workspace; using it still requires the owner's confirmation. Free database capacity has not yet been checked inside a confirmed target workspace.
+**Repository:** https://github.com/Ambujkrr/taskflow
 
-Prepared configuration: one free Node web service plus one free PostgreSQL database in Oregon, same-origin frontend/API, generated JWT secret, internal database connection, migrations at startup, database-aware health check and automatic deployments disabled. Local schema validation cannot establish account quota, service-name availability, resource creation success or public runtime behavior.
+The owner authorized the deployment. Render created only a new free Node web service and a new free PostgreSQL 17 database in My Workspace. The initial deploy of commit 8fd3cb8 is live; startup logs confirm both migrations applied successfully. Production uses Render's exact RENDER_EXTERNAL_URL as its trusted origin, with an optional explicit APP_ORIGIN override for a custom domain. The generated 256-bit JWT secret and internal database URL are supplied by Render. No manual secret values were required.
 
-- [ ] Authorize repository visibility, remote creation/push, and the Render target workspace.
-- [ ] Confirm free database availability; do not delete or repurpose another project's database.
-- [ ] Create authorized new resources and configure the actual HTTPS APP_ORIGIN.
-- [ ] Verify production migration logs and public /api/health.
-- [ ] Verify registration, login/logout, refresh persistence, CRUD, filters and dashboard at the actual public HTTPS origin.
-- [ ] Verify production cookie flags and cross-user isolation publicly.
-- [ ] Verify public mobile layout and record the database expiry date.
-- [ ] Record the actual GitHub URL and verified public application URL.
+The production API passed all 16 smoke checks, and the live desktop/mobile browser flows passed, including accessibility scans and same-origin HTTPS network assertions. A separate manual browser lifecycle passed. The deployed commit's GitHub CI run succeeded.
 
-No public application URL is supplied until these checks pass.
+- [x] Authorized public repository creation and commit push.
+- [x] Free database availability confirmed by successful creation; existing projects unchanged.
+- [x] Exact public HTTPS origin configured automatically.
+- [x] Production migrations applied and public health reports a connected PostgreSQL database.
+- [x] Registration, login/logout, refresh persistence and captured-token revocation.
+- [x] Task create/read/edit/complete/delete, search, filtering and dashboard counts.
+- [x] Cross-user isolation, CSRF rejection and production cookie flags.
+- [x] Public desktop/mobile layout and HTTPS frontend/backend communication.
+- [x] Test tasks deleted; secrets/source exposure checks passed within the inspected scope.
+- [x] Database expiry recorded: 18 December 2026, 7:31 PM IST.
+
+See [PRODUCTION_SMOKE.md](PRODUCTION_SMOKE.md) for the full production evidence, commands and limitations. Later documentation/test-only commits do not change the deployed server/client implementation.

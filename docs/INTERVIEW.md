@@ -4,7 +4,7 @@
 
 “TaskFlow is a full-stack task management application I built using Node.js, Express, TypeScript, React and PostgreSQL. Users can create an account, manage their own tasks, search and filter them, and see dashboard counts calculated by the backend. I used Prisma for database access and migrations, Zod for validation, and JWTs in HttpOnly cookies for authentication. I also added CSRF protection and database-backed session revocation. My tests cover authentication, the task lifecycle, and attempts to access another user’s tasks.”
 
-Only describe deployment as complete after the public verification checklist is recorded. Explain the code yourself and acknowledge AI coding assistance honestly when asked.
+The public deployment is verified; use the real URL in PRODUCTION_SMOKE.md when demonstrating the application. Explain the code yourself and acknowledge AI coding assistance honestly when asked.
 
 | Question                                            | Key points to explain                                                                                                                                                      |
 | --------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -22,7 +22,7 @@ Only describe deployment as complete after the public verification checklist is 
 | Why these indexes?                                  | Lists filter by user and status/priority, and order by creation date. Substring title search is fine at MVP scale; consider trigram indexing when measurements justify it. |
 | What would you change for multiple instances?       | Shared rate-limit store, carefully configured proxy trust, load testing and stronger observability; sessions already live in PostgreSQL.                                   |
 | What are the current limitations?                   | No email verification/password reset, no team collaboration, no automatic reminders, no optimistic concurrency controls; free hosting has sleep and expiry constraints.    |
-| How did you verify it?                              | Show the executed verification report. Distinguish real database tests, UI tests, local browser smoke checks, and pending public deployment checks.                        |
+| How did you verify it?                              | Show the executed verification report. Distinguish real database tests, UI tests, local browser smoke checks, and completed public deployment checks.                      |
 
 ## A focused code-reading path
 

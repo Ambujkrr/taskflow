@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { randomBytes } from "node:crypto";
 async function checkAccessibility(page: import("@playwright/test").Page) {
   const scan = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
@@ -18,6 +19,12 @@ async function checkAccessibility(page: import("@playwright/test").Page) {
 test("registration, persistence, CRUD, filters, dashboard, and logout", async ({
   page,
 }) => {
+  const apiRequests: string[] = [];
+  page.on("request", (req) => {
+    if (new URL(req.url()).pathname.startsWith("/api/"))
+      apiRequests.push(req.url());
+  });
+  const password = randomBytes(24).toString("hex");
   const email = `smoke-${Date.now()}-${Math.random().toString(36).slice(2)}@example.test`;
   await page.goto("/");
   await expect(
@@ -27,9 +34,7 @@ test("registration, persistence, CRUD, filters, dashboard, and logout", async ({
   await page.getByRole("button", { name: "Create an account" }).click();
   await page.getByLabel("Full name").fill("Smoke Tester");
   await page.getByLabel("Email address").fill(email);
-  await page
-    .getByLabel("Password", { exact: true })
-    .fill("Smoke-test-password-678!");
+  await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Create your workspace" }).click();
   await expect(
     page.getByRole("heading", { name: /Let’s find your flow/ }),
@@ -128,11 +133,16 @@ test("registration, persistence, CRUD, filters, dashboard, and logout", async ({
     page.getByRole("heading", { name: "Welcome back." }),
   ).toBeVisible();
   await page.getByLabel("Email address").fill(email);
-  await page
-    .getByLabel("Password", { exact: true })
-    .fill("Smoke-test-password-678!");
+  await page.getByLabel("Password", { exact: true }).fill(password);
   await page.getByRole("button", { name: "Sign in to your workspace" }).click();
   await expect(
     page.getByRole("button", { name: "New task", exact: true }),
   ).toBeVisible();
+  const expectedOrigin = new URL(page.url()).origin;
+  expect(apiRequests.length).toBeGreaterThan(0);
+  expect(
+    apiRequests.every((url) => new URL(url).origin === expectedOrigin),
+  ).toBe(true);
+  if (process.env.E2E_BASE_URL?.startsWith("https:"))
+    expect(apiRequests.every((url) => url.startsWith("https://"))).toBe(true);
 });

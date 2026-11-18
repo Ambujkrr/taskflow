@@ -4,7 +4,13 @@ A focused, responsive task manager built with a genuine **Node.js + Express API*
 
 Built by **Ambuj Kumar**, B.Tech CSE (Data Science), graduating May 2027, as a practical full-stack portfolio project.
 
-**Deployment status:** prepared for Render; no public deployment or GitHub URL is claimed until authorized and verified. See [verification](docs/VERIFICATION.md).
+**Deployment status: LIVE — verified 18 November 2026.**
+
+- [Live TaskFlow application](https://taskflow-td5y.onrender.com)
+- [Public GitHub repository](https://github.com/Ambujkrr/taskflow)
+- [Production smoke-test report](docs/PRODUCTION_SMOKE.md)
+
+Registration, login/logout, persistent task CRUD, search/filtering, dashboard counts, cross-user isolation and public desktop/mobile flows were tested. Both resources use free Render plans. The free database expires **18 December 2026, 7:31 PM IST**; the web service can sleep when idle. See [verification](docs/VERIFICATION.md) for evidence and remaining limits.
 
 ## What works
 
@@ -131,7 +137,7 @@ For production locally, build first, set `NODE_ENV=production`, and provide HTTP
 5. Confirm `/api/health` returns `200` and `{"status":"ok","database":"connected"}`. Open the root URL and complete the checklist in [VERIFICATION.md](docs/VERIFICATION.md).
 6. Only after those checks pass, add the **actual verified** public URL and repository URL here and in your application.
 
-If Blueprint creation is unavailable, manually create the same free PostgreSQL database and Node web service. Set `NODE_VERSION=26.13.1`, `NODE_ENV=production`, `APP_ORIGIN`, a privately generated `JWT_SECRET`, and the database's **internal** `DATABASE_URL`. Use the same build/start/health commands and disable automatic deployments until you want them.
+If Blueprint creation is unavailable, manually create the same free PostgreSQL database and Node web service. Set `NODE_VERSION=26.13.1`, `NODE_ENV=production`, a privately generated `JWT_SECRET`, and the database's **internal** `DATABASE_URL`. Use the same build/start/health commands and disable automatic deployments until you want them.
 
 Render free web services sleep after inactivity; the first request can be slow. Free PostgreSQL expires after 30 days and only one free database can be active per workspace. Check availability before creating resources, record expiration, and export data before expiry. This is portfolio/demo hosting, not durable production infrastructure. See [Render free-tier documentation](https://render.com/docs/free).
 
@@ -169,5 +175,15 @@ compose.yaml          Local PostgreSQL with separate test database
 ## Screenshots
 
 Use an account containing only synthetic tasks. Capture the overview at 1440×1000 and 390×844, plus the create-task dialog and sign-in screen. Place approved captures in `docs/screenshots/` and link them here after reviewing them for personal information. Do not include credentials, database URLs or tokens.
+
+To repeat the authorized public API checks in PowerShell:
+
+```powershell
+$env:E2E_BASE_URL="https://taskflow-td5y.onrender.com"
+npm run test:production
+npm run test:e2e
+```
+
+Production checks use unique synthetic accounts with generated passwords. Created tasks are removed; empty test accounts remain. All observed browser API requests must use the same HTTPS origin. Never point mutation tests at an unapproved application.
 
 For API details see [API.md](docs/API.md). For the learning walkthrough and likely interview questions see [INTERVIEW.md](docs/INTERVIEW.md).
