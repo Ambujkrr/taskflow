@@ -11,7 +11,8 @@ let csrfCookie: string;
 let sessionCookie: string;
 beforeAll(async () => {
   vi.stubEnv("NODE_ENV", "production");
-  vi.stubEnv("APP_ORIGIN", origin);
+  vi.stubEnv("APP_ORIGIN", "");
+  vi.stubEnv("RENDER_EXTERNAL_URL", origin);
   vi.stubEnv("JWT_SECRET", randomBytes(32).toString("base64"));
   vi.resetModules();
   app = (await import("../src/app.js")).createApp();

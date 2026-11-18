@@ -17,7 +17,11 @@ const schema = z.object({
       "Generate a random JWT_SECRET",
     ),
 });
-const result = schema.safeParse(process.env);
+// Render supplies the exact service URL; an explicit origin overrides it for custom domains.
+const result = schema.safeParse({
+  ...process.env,
+  APP_ORIGIN: process.env.APP_ORIGIN || process.env.RENDER_EXTERNAL_URL,
+});
 if (!result.success)
   throw new Error(
     `Invalid environment variables: ${result.error.issues.map((i) => i.path.join(".")).join(", ")}`,

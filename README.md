@@ -80,16 +80,16 @@ The script creates eight realistic sample tasks with dates relative to the day i
 
 ## Environment variables
 
-| Variable                                   | Purpose                                                                                                    |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| `NODE_ENV`                                 | `development`, `test`, or `production`                                                                     |
-| `PORT`                                     | API listen port; defaults to 3001; Render injects its port                                                 |
-| `APP_ORIGIN`                               | Exact public frontend origin without a trailing path; HTTPS required in production                         |
-| `DATABASE_URL`                             | PostgreSQL application connection string                                                                   |
-| `JWT_SECRET`                               | Random secret of at least 32 characters (Render generates a 256-bit secret); rotate to invalidate all JWTs |
-| `TEST_DATABASE_URL`                        | Separate disposable PostgreSQL database ending in `_test`; required for API tests                          |
-| `SEED_EMAIL`, `SEED_PASSWORD`, `SEED_NAME` | Optional private seed configuration                                                                        |
-| `E2E_BASE_URL`                             | Optional running application URL for explicit Playwright smoke tests                                       |
+| Variable                                   | Purpose                                                                                                          |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- |
+| `NODE_ENV`                                 | `development`, `test`, or `production`                                                                           |
+| `PORT`                                     | API listen port; defaults to 3001; Render injects its port                                                       |
+| `APP_ORIGIN`                               | Trusted frontend origin; defaults to Render’s exact RENDER_EXTERNAL_URL when unset. HTTPS required in production |
+| `DATABASE_URL`                             | PostgreSQL application connection string                                                                         |
+| `JWT_SECRET`                               | Random secret of at least 32 characters (Render generates a 256-bit secret); rotate to invalidate all JWTs       |
+| `TEST_DATABASE_URL`                        | Separate disposable PostgreSQL database ending in `_test`; required for API tests                                |
+| `SEED_EMAIL`, `SEED_PASSWORD`, `SEED_NAME` | Optional private seed configuration                                                                              |
+| `E2E_BASE_URL`                             | Optional running application URL for explicit Playwright smoke tests                                             |
 
 ## Tests and builds
 
@@ -125,7 +125,8 @@ For production locally, build first, set `NODE_ENV=production`, and provide HTTP
 
 1. Create a GitHub repository named `taskflow`, select the desired visibility, and push the reviewed local `main` branch. Never include `.env`, `.local`, database files or credentials.
 2. In Render, choose **New → Blueprint** and connect that repository. Review `render.yaml`: one free Node web service and one free PostgreSQL 17 database, both in Oregon. Use new TaskFlow resources; do not replace existing projects.
-3. Set `APP_ORIGIN` to the web service's actual HTTPS origin. Do not guess the final subdomain. The blueprint generates `JWT_SECRET` and injects the database's internal connection string automatically. Render may need an initial service creation followed by this origin update and a manual deploy.
+3. Render supplies the actual HTTPS `RENDER_EXTERNAL_URL`; TaskFlow uses this exact origin when `APP_ORIGIN` is unset. The blueprint generates `JWT_SECRET` and injects the internal database connection automatically. For a custom domain, explicitly set `APP_ORIGIN` to that HTTPS origin.
+
 4. Build command: `npm ci --include=dev && npm run build`. Start command: `npm run start:render`. This runs `prisma migrate deploy` before starting Express; migration failures prevent startup. A single free instance is intentional. The health endpoint checks the actual database.
 5. Confirm `/api/health` returns `200` and `{"status":"ok","database":"connected"}`. Open the root URL and complete the checklist in [VERIFICATION.md](docs/VERIFICATION.md).
 6. Only after those checks pass, add the **actual verified** public URL and repository URL here and in your application.
