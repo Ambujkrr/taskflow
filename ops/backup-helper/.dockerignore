@@ -1,0 +1,8 @@
+**
+!Dockerfile
+!package.json
+!src/
+!src/config.mjs
+!src/encrypt.mjs
+!src/server.mjs
+!src/start.mjs
