@@ -1,6 +1,6 @@
 import http from "node:http";
 import { spawn } from "node:child_process";
-import { childPostgresEnvironment, tokenMatches } from "./config.mjs";
+import { activationMatches, childPostgresEnvironment, tokenMatches } from "./config.mjs";
 import { encryptDump } from "./encrypt.mjs";
 
 function productionDump(config, signal) {
@@ -60,6 +60,16 @@ export function createBackupServer(config, { dumpFactory = productionDump, now =
     if (req.method === "GET" && req.url === "/healthz") {
       res.writeHead(now() < config.expiresAt ? 204 : 410, { "Cache-Control": "no-store" });
       return res.end();
+    }
+    if (req.method === "GET" && req.url === "/v1/readiness") {
+      if (
+        now() < config.expiresAt && !consumed && !active &&
+        activationMatches(config, req.headers["x-backup-activation-id"])
+      ) {
+        res.writeHead(204, { "Cache-Control": "no-store" });
+        return res.end();
+      }
+      return hidden(res);
     }
     if (req.method !== "POST" || req.url !== "/v1/backup") return hidden(res);
     if (

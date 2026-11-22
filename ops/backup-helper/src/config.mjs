@@ -26,6 +26,13 @@ function tokenDigest(value) {
   return Buffer.from(value, "hex");
 }
 
+function activationId(value) {
+  if (!/^[A-Za-z0-9_-]{32,128}$/.test(value ?? "")) {
+    throw new Error("Invalid BACKUP_ACTIVATION_ID");
+  }
+  return value;
+}
+
 function parseDatabaseUrl(raw, expectedHost, expectedDatabase) {
   if (!raw) throw new Error("Missing DATABASE_URL");
   const url = new URL(raw);
@@ -58,6 +65,7 @@ export function loadConfig(env = process.env, now = Date.now()) {
       max: 900,
     }),
     tokenDigest: tokenDigest(env.BACKUP_RETRIEVAL_TOKEN_SHA256),
+    activationId: activationId(env.BACKUP_ACTIVATION_ID),
     expiresAt,
     publicKey: decodePublicKey(env.BACKUP_PUBLIC_KEY_B64),
     database: parseDatabaseUrl(
@@ -83,6 +91,13 @@ export function tokenMatches(config, authorization) {
   if (!authorization?.startsWith("Bearer ")) return false;
   const candidate = createHash("sha256").update(authorization.slice(7)).digest();
   return timingSafeEqual(candidate, config.tokenDigest);
+}
+
+export function activationMatches(config, candidate) {
+  if (typeof candidate !== "string") return false;
+  const expected = Buffer.from(config.activationId);
+  const received = Buffer.from(candidate);
+  return expected.length === received.length && timingSafeEqual(expected, received);
 }
 
 export function childPostgresEnvironment(config) {
