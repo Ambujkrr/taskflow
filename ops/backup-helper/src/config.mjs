@@ -69,6 +69,16 @@ export function loadConfig(env = process.env, now = Date.now()) {
   };
 }
 
+export function loadStartupConfig(env = process.env, now = Date.now()) {
+  if (!env.DATABASE_URL) {
+    return {
+      mode: "dormant",
+      port: integer(env.PORT ?? "10000", "PORT", { min: 1, max: 65535 }),
+    };
+  }
+  return { mode: "active", ...loadConfig(env, now) };
+}
+
 export function tokenMatches(config, authorization) {
   if (!authorization?.startsWith("Bearer ")) return false;
   const candidate = createHash("sha256").update(authorization.slice(7)).digest();

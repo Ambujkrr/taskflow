@@ -35,6 +35,22 @@ function hidden(res) {
   res.end();
 }
 
+export function createDormantServer() {
+  const server = http.createServer((req, res) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Referrer-Policy", "no-referrer");
+    if (req.method === "GET" && req.url === "/healthz") {
+      res.writeHead(204, { "Cache-Control": "no-store" });
+      return res.end();
+    }
+    return hidden(res);
+  });
+  server.requestTimeout = 10_000;
+  server.headersTimeout = 10_000;
+  server.keepAliveTimeout = 5_000;
+  return server;
+}
+
 export function createBackupServer(config, { dumpFactory = productionDump, now = Date.now } = {}) {
   let consumed = false;
   let active = false;
